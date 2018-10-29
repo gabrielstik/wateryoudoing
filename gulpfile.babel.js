@@ -56,7 +56,7 @@ gulp.task('scripts', () => {
   .bundle()
   .on('error', gutil.log)
   .pipe(source('app.js'))
-  .on('error', gutil.log)
+  // .on('error', gutil.log)
   .pipe(buffer())
   .pipe(rename('app.js'))
   .pipe(sourcemaps.init({loadMaps: true}))

@@ -1,0 +1,121 @@
+.quizz {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 7fr 5fr;
+
+  &__questions {
+    --paddingTop: 110px;
+    height: calc(100% - var(--paddingTop));
+    padding-top: var(--paddingTop);
+    background-color: $black;
+    color: $white;
+    text-align: center;
+
+    &__title {
+      font-size: 26px;
+      font-weight: bold;
+    }
+
+    &__desc {
+      margin-top: 40px;
+      font-size: 18px;
+      line-height: 28px;
+    }
+
+    &__list {
+      width: 365px;
+      margin: 70px auto;
+
+      &__item {
+        width: 100%;
+        margin-top: 17px;
+        padding: 10px 0;
+        border-radius: 22px;
+        background-color: $med-grey;
+        border: solid 1px $med-grey;
+        cursor: pointer;
+
+        &:hover {
+          border: solid 1px $grey;
+        }
+      }
+    }
+  }
+
+  &__illus {
+
+    &__container {
+      margin-top: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &__images {
+      height: 300px;
+      width: 100%;
+      position: relative;
+    }
+
+    &__image {
+      height: 300px;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transform: scale(0);
+      will-change: scale opacity;
+
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
+      }
+    }
+  }
+
+  &__toolbar {
+    padding: 60px calc(100vw / 12);
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr;
+
+    &__bladder {
+      margin-left: auto;
+    }
+
+    &__bar {
+
+      &__label {
+        font-weight: bold;
+        font-size: 14px;
+        text-transform: uppercase;
+        color: $txt-dark-grey;
+      }
+
+      &__bar {
+        width: 160px;
+        height: 12px;
+        margin-top: 6px;
+        border: solid 1px $grey;
+        border-radius: 8px;
+        overflow: hidden;
+
+        &__fill {
+          width: 100%;
+          height: 100%;
+          border-radius: 6px;
+          background-color: $blue;
+        }
+      }
+    }
+
+    &__time {
+      margin-top: 10px;
+      font-size: 30px;
+      font-weight: bold;
+      color: $txt-dark-grey;
+    }
+  }
+}

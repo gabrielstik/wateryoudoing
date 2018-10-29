@@ -1,5 +1,4 @@
-$body-color: blue;
-
-body {
-  color: $body-color;
-}
+@import '_reset';
+@import '_colors';
+@import '_default';
+@import 'quizz';
