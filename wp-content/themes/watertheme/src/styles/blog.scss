@@ -1,0 +1,65 @@
+.header {
+  
+  &__top {
+    height: 50px;
+    width: 100%;
+    background-color: $blog-black;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+  }
+
+  &__nav {
+    height: 50px;
+    width: calc(100% - calc((100vw / 12) * 4));
+    padding: 0 calc((100vw / 12) * 2);
+    border-bottom: solid 1px $grey;
+
+    &__list {
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+
+      &__item {
+        height: 100%;
+        font-size: 14px;
+        font-weight: 600;
+        color: $blog-black;
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+
+        &.current {
+          position: relative;
+          
+          &::after {
+            content: '';
+            width: 100%;
+            height: 2px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background-color: $blog-black;
+          }
+        }
+      }
+    }
+  }
+
+  &__back {
+    padding-left: calc(100vw / 12);
+
+    a {
+      font-family: 'Tisa', sans-serif;
+      font-size: 14px;
+      color: $white;
+    }
+  }
+
+  &__title {
+    text-align: center;
+    font-family: 'Tisa', sans-serif;
+    font-size: 22px;
+    color: $white;
+  }
+}
