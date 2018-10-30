@@ -1,0 +1,62 @@
+.landing {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  &__content {
+    width: 30%;
+  }
+
+  &__title {
+    font-family: 'Tisa', sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  &__text {
+    margin-top: 35px;
+    font-size: 16px;
+    color: $dark-grey;
+    line-height: 23px;
+  }
+
+  &__cta {
+    width: 100%;
+    margin: 85px auto;
+    padding: 15px 0;
+    border: solid 1px $black;
+    display: block;
+    position: relative;
+    font-family: 'Tisa', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: transform .2s ease-out;
+    will-change: color;
+
+    &:after {
+      content: '';
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      z-index: -1;
+      background-color: $blue;
+      transform: scaleY(0);
+      transform-origin: bottom;
+      will-change: transform;
+      transition: transform .2s ease-out;
+    }
+
+    &:hover {
+    
+      &:after {
+        transform: scaleY(1);
+      }
+    }
+  }
+}

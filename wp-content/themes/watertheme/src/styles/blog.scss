@@ -62,4 +62,91 @@
     font-size: 22px;
     color: $white;
   }
+
+  &__search {
+    height: 90px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__input {
+      width: 40%;
+      border: none;
+      font-size: 14px;
+      color: $blog-black;
+      font-weight: 500;
+      outline: none;
+      text-align: center;
+
+      &::placeholder {
+        font-size: 14px;
+        color: $blog-black;
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+.blog {
+
+  &__blog {
+    width: calc(100% - calc(100vw / 12) * 2);
+    margin: auto;
+  }
+
+  &__article {
+    
+    &--first {
+      height: 400px;
+      width: 100%;
+      position: relative;
+      
+      &__image {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+
+      &__content {
+        --pady: 70px;
+        width: 20%;
+        height: calc(100% - var(--pady) * 2);
+        margin-left: auto;
+        padding: var(--pady) 50px;
+        background-color: rgba(0,0,0,.6);
+      }
+
+      &__title {
+        font-family: 'Tisa', sans-serif;
+        font-size: 28px;
+        font-weight: 500;
+        color: $white;
+      }
+
+      &__author {
+        margin-top: 15px;
+        text-transform: uppercase;
+        font-size: 14px;
+        font-weight: 500;
+        color: $white;
+      }
+
+      &__excerpt {
+        margin-top: 25px;
+        font-size: 14px;
+        color: $white;
+        line-height: 25px;
+      }
+    }
+  }
 }
