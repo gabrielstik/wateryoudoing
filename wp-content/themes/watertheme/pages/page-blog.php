@@ -54,6 +54,28 @@ Template Name: Blog
           <img src="<?= get_template_directory_uri() ?>/images/article-1.jpg" alt="">
         </div>
       </article>
+      <div class="blog__mosaic">
+        <article class="blog__article--mosaic blog__article--large">
+          <div class="blog__article--mosaic__image">
+            <img src="<?= get_template_directory_uri() ?>/images/article-2.jpg" alt="">
+          </div>
+          <div class="blog__article--mosaic__content">
+            <div class="blog__article--mosaic__category">Alimentation</div>
+            <h2 class="blog__article--mosaic__title">Shower or bath</h2>
+            <p class="blog__article--mosaic__excerpt">Being the savage's bowsman, that is, the person who pulled the bow-oar in his boat (the second one from forward).</p>
+          </div>
+        </article>
+        <article class="blog__article--mosaic blog__article--small">
+        <div class="blog__article--mosaic__image">
+            <img src="<?= get_template_directory_uri() ?>/images/article-3.jpg" alt="">
+          </div>
+          <div class="blog__article--mosaic__content">
+            <div class="blog__article--mosaic__category">Alimentation</div>
+            <h2 class="blog__article--mosaic__title">Shower or bath</h2>
+            <p class="blog__article--mosaic__excerpt">Being the savage's bowsman, that is, the person who pulled the bow-oar in his boat (the second one from forward).</p>
+          </div>
+        </article>
+      </div>
     </section>
   </div>
 </main>
