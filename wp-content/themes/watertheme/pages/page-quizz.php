@@ -5,45 +5,71 @@ Template Name: Quizz
 ?>
 <? get_header() ?>
 <main role="main">
+  <a href="/wp-content/themes/watertheme/api/_destroy-session.php">Destroy session</a>
   <div class="quizz">
+    <?
+      $args = array(
+        'post_type' => 'questions',
+        'p' => !empty($_SESSION['current_question']) ? $_SESSION['current_question'] : get_field('first_question', 'options'),
+        'posts_per_page' => 1
+      );
+      $the_query = new WP_Query($args);
+      $the_query->the_post();
+    ?>
     <div class="quizz__illus">
-      <div class="quizz__toolbar">
-        <div class="quizz__toolbar__energy">
-          <div class="quizz__toolbar__bar__label">Energy</div>
-          <div class="quizz__toolbar__bar__bar">
-            <div class="quizz__toolbar__bar__bar__fill"></div>
-          </div>
-        </div>
-        <div class="quizz__toolbar__time">07:02</div>
-        <div class="quizz__toolbar__bladder">
-          <div class="quizz__toolbar__bar__label">Bladder</div>
-          <div class="quizz__toolbar__bar__bar">
-            <div class="quizz__toolbar__bar__bar__fill"></div>
-          </div>
-        </div>
+      <div class="quizz__timebar">
+        <div class="quizz__time"><? the_field('time') ?></div>
       </div>
       <div class="quizz__illus__container">
+        <? if (have_rows('answers')): ?>
         <ul class="quizz__illus__images">
+          <? while (have_rows('answers')): the_row() ?>
           <li class="quizz__illus__image ref-illustration">
-            <img src="<?= get_template_directory_uri() ?>/images/shower.svg">
+            <img src="<?= get_the_post_thumbnail_url(get_sub_field('item')) ?>">
           </li>
-          <li class="quizz__illus__image ref-illustration">
-            <img src="<?= get_template_directory_uri() ?>/images/shower.svg">
-          </li>
-          <li class="quizz__illus__image ref-illustration">
-            <img src="<?= get_template_directory_uri() ?>/images/shower.svg">
-          </li>
+          <? endwhile ?>
         </ul>
+        <? endif ?>
+      </div>
+      <div class="quizz__toolbar">
+        <div class="quizz__toolbar__energy">
+          <div class="quizz__toolbar__bar__label button ref-energy" energy="<? $_SESSION['energy'] ? $_SESSION['energy'] : 1 ?>">Energy</div>
+          <div class="quizz__toolbar__bar__bar">
+            <div class="quizz__toolbar__bar__bar__fill"></div>
+          </div>
+        </div>
+        <div class="quizz__toolbar__hunger">
+          <div class="quizz__toolbar__bar__label ref-hunger" hunger="<? $_SESSION['hunger'] ? $_SESSION['hunger'] : 1 ?>">Hunger</div>
+          <div class="quizz__toolbar__bar__bar">
+            <div class="quizz__toolbar__bar__bar__fill"></div>
+          </div>
+        </div>
+        <div class="quizz__toolbar__bladder">
+          <div class="quizz__toolbar__bar__label ref-bladder" bladder="<? $_SESSION['bladder'] ? $_SESSION['bladder'] : 1 ?>">Bladder</div>
+          <div class="quizz__toolbar__bar__bar">
+            <div class="quizz__toolbar__bar__bar__fill"></div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="quizz__questions">
-      <h1 class="quizz__questions__title">Wake up !</h1>
-      <p class="quizz__questions__desc">Your alarm clock is ringing.<br>What do you decide to do ?</p>
+      <div class="b-oh">
+        <h1 class="quizz__questions__title"><? the_title() ?></h1>
+      </div>
+      <p class="quizz__questions__desc"><? the_field('question') ?></p>
+      <? if (have_rows('answers')): ?>
       <ul class="quizz__questions__list">
-        <li class="quizz__questions__list__item ref-answer">Quick ! Shower time</li>
-        <li class="quizz__questions__list__item ref-answer">Take my time : bath</li>
-        <li class="quizz__questions__list__item ref-answer">Quick ! Shower time</li>
+        <? while (have_rows('answers')): the_row() ?>
+        <li
+          class="quizz__questions__list__item ref-answer"
+          next="<? the_sub_field('next_answer') ?>"
+          delta-energy="<? the_field('energy', get_sub_field('item')) ?>"
+          delta-hunger="<? the_field('hunger', get_sub_field('item')) ?>"
+          delta-bladder="<? the_field('bladder', get_sub_field('item')) ?>"
+        ><? the_sub_field('answer') ?></li>
+        <? endwhile ?>
       </ul>
+      <? endif ?>
     </div>
   </div>
 </main>

@@ -12,11 +12,14 @@
   "scripts": {
     "dev": "gulp dev",
     "build": "gulp build",
-    "clean": "gulp clean"
+    "clean": "gulp clean",
+    "pushdb": "mysqldump --column-statistics=0 -u wateryoudoing_ -h 51.254.118.218 -p wateryoudoing_ > wateryoudoing.sql && mysql -u wateryoudoing -h 51.254.118.218 -p wateryoudoing < wateryoudoing.sql && mysql -u wateryoudoing -h 51.254.118.218 -p -e 'USE wateryoudoing; UPDATE b0e5ef_options SET option_value = \"https://wateryoudoing.gabrielstik.fr\" WHERE option_name = \"siteurl\"; UPDATE b0e5ef_options SET option_value = \"https://wateryoudoing.gabrielstik.fr\" WHERE option_name = \"home\"'",
+    "pulldb": "mysqldump --column-statistics=0 -u wateryoudoing -h 51.254.118.218 -p wateryoudoing > wateryoudoing.sql && mysql -u wateryoudoing_ -h 51.254.118.218 -p wateryoudoing_ < wateryoudoing.sql && mysql -u wateryoudoing_ -h 51.254.118.218 -p -e 'USE wateryoudoing_; UPDATE b0e5ef_options SET option_value = \"http://localhost:8888\" WHERE option_name = \"siteurl\"; UPDATE b0e5ef_options SET option_value = \"http://localhost:8888\" WHERE option_name = \"home\"'",
+    "prod": ""
   },
   "dependencies": {
     "@babel/register": "^7.0.0",
-    "babel-core": "^6.26.3",
+    "babel": "^6.23.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-es2015-ie": "^6.7.0",
@@ -34,7 +37,7 @@
     "gulp-notify": "^3.0.0",
     "gulp-plumber": "^1.1.0",
     "gulp-pug": "^3.3.0",
-    "gulp-rename": "^1.2.2",
+    "gulp-rename": "^1.4.0",
     "gulp-responsive": "^2.8.0",
     "gulp-rm": "^1.0.4",
     "gulp-sass": "^3.1.0",
@@ -47,6 +50,7 @@
     "vinyl-source-stream": "^1.1.0"
   },
   "devDependencies": {
+    "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
     "babel-plugin-transform-es2015-for-of": "^6.23.0",
     "vinyl-buffer": "^1.0.1"

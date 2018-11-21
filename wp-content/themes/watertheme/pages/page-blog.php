@@ -66,8 +66,8 @@ Template Name: Blog
           </div>
         </article>
         <article class="blog__article--mosaic blog__article--small">
-        <div class="blog__article--mosaic__image">
-            <img src="<?= get_template_directory_uri() ?>/images/article-3.jpg" alt="">
+          <div class="blog__article--mosaic__image">
+            <img src="<?= get_template_directory_uri() ?>/images/article-1.jpg" alt="">
           </div>
           <div class="blog__article--mosaic__content">
             <div class="blog__article--mosaic__category">Alimentation</div>

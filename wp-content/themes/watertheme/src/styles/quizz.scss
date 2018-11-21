@@ -11,6 +11,7 @@
     background-color: $black;
     color: $white;
     text-align: center;
+    overflow: hidden;
 
     &__title {
       font-size: 26px;
@@ -44,6 +45,7 @@
   }
 
   &__illus {
+    position: relative;
 
     &__container {
       margin-top: 100px;
@@ -77,12 +79,34 @@
   }
 
   &__toolbar {
-    padding: 60px calc(100vw / 12);
-    display: grid;
-    grid-template-columns: 2fr 1fr 2fr;
+    width: 80%;
+    margin-left: 10%;
+    padding: 60px 0;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 80px;
+    left: 0;
+
+    &__energy {
+
+      .quizz__toolbar__bar__bar__fill {
+        background-color: $blue;
+      }
+    }
+
+    &__hunger {
+
+      .quizz__toolbar__bar__bar__fill {
+        background-color: $red;
+      }
+    }
 
     &__bladder {
-      margin-left: auto;
+
+      .quizz__toolbar__bar__bar__fill {
+        background-color: $yellow;
+      }
     }
 
     &__bar {
@@ -106,16 +130,27 @@
           width: 100%;
           height: 100%;
           border-radius: 6px;
-          background-color: $blue;
         }
       }
     }
+  }
 
-    &__time {
-      margin-top: 10px;
-      font-size: 30px;
-      font-weight: bold;
-      color: $txt-dark-grey;
-    }
+  &__timebar {
+    width: 80%;
+    height: 3px;
+    margin: 80px auto;
+    background-color: $txt-dark-grey;
+    position: relative;
+  }
+
+  &__time {
+    padding: 0 20px;
+    font-size: 30px;
+    font-weight: bold;
+    color: $txt-dark-grey;
+    position: absolute;
+    background-color: $white;
+    top: -15px;
+    left: 0;
   }
 }

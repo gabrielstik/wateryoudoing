@@ -15,7 +15,8 @@ function add_post_type_items() {
     $args = array(
       'public' => true,
       'label'  => 'Objets',
-      'menu_icon' => 'dashicons-art'
+      'menu_icon' => 'dashicons-art',
+      'supports' => array('title', 'thumbnail')
     );
     register_post_type('items', $args);
 }

@@ -8,3 +8,8 @@ function add_styles_scripts() {
   wp_enqueue_style('main_style');
   wp_enqueue_script('main_script');
 }
+
+function add_ajax_script() {
+  wp_localize_script('main', 'ajaxurl', admin_url('admin-ajax.php'));
+}
+add_action('wp_enqueue_scripts', 'add_ajax_script');
