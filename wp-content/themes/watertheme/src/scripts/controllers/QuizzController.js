@@ -80,14 +80,17 @@ export default class QuizzController {
         const deltaEnergy = this._getAnswers()[answerNth].getAttribute('delta-energy')
         const deltaHunger = this._getAnswers()[answerNth].getAttribute('delta-hunger')
         const deltaBladder = this._getAnswers()[answerNth].getAttribute('delta-bladder')
+        console.log('')
+        console.log('delta', deltaBladder)
 
         const data = JSON.parse(http.responseText)
+        console.log('get', data.bladder)
           
         const next = this._getAnswers()[answerNth].getAttribute('next')
-        console.log("delta", deltaEnergy, deltaHunger, deltaBladder)
         const energy = parseInt(data.energy) + parseInt(deltaEnergy)
         const hunger = parseInt(data.hunger) + parseInt(deltaHunger)
         const bladder = parseInt(data.bladder) + parseInt(deltaBladder)
+        console.log('bladder', bladder)
 
         $energy.setAttribute('energy', energy)
         $hunger.setAttribute('hunger', hunger)
@@ -102,9 +105,10 @@ export default class QuizzController {
   }
 
   _postData(next, energy, hunger, bladder) {
-    console.log("before post", energy, hunger, bladder)
+    console.log("before post", bladder)
     this.isRequesting = true
     const url = `/wp-content/themes/watertheme/api/post-data.php?next=${next}&energy=${energy}&hunger=${hunger}&bladder${bladder}`
+    console.log('url', url)
     const http = new XMLHttpRequest()
     http.onreadystatechange = () => {
       if (http.readyState == 4 && http.status == 200) {
@@ -114,8 +118,6 @@ export default class QuizzController {
     http.open('POST', url, true)
     http.send()
   }
-
-  // faut régler le problème du next dans le dom (avec un xmlhttprequest get de la session)
 
   _domAjaxRequest() {
     this.isRequesting = true
