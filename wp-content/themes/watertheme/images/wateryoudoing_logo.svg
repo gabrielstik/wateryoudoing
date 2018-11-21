@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="291px" height="43px" viewBox="0 0 291 43" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>WYD_Logo</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="0.000277777778 0.66739661 19.7921264 0.66739661 19.7921264 40.3050847 0.000277777778 40.3050847"></polygon>
+        <polygon id="path-3" points="0.437986111 0.667118644 12.6810417 0.667118644 12.6810417 40.3049458 0.437986111 40.3049458"></polygon>
+    </defs>
+    <g id="QUESTIONS" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="HOME---UI" transform="translate(-925.000000, -159.000000)">
+            <g id="WYD_Logo" transform="translate(925.000000, 159.000000)">
+                <g id="WaterYouDoing-Copy-3" transform="translate(0.000000, 7.000000)" font-family="Averta-Black" font-size="36" font-weight="700">
+                    <text id="Water" fill="#2996F8">
+                        <tspan x="0" y="28">Water</tspan>
+                    </text>
+                    <text id="YouDoing" fill="#093147">
+                        <tspan x="98" y="28">YouDoing</tspan>
+                    </text>
+                </g>
+                <g id="Group-7-Copy-2" transform="translate(266.000000, 0.000000)">
+                    <g id="Group-3" transform="translate(0.000000, 0.027866)">
+                        <g id="Fill-1-Clipped">
+                            <mask id="mask-2" fill="white">
+                                <use xlink:href="#path-1"></use>
+                            </mask>
+                            <g id="path-1"></g>
+                            <path d="M19.4454167,29.4945661 C21.6058333,20.8463458 12.9634722,0.66739661 12.9634722,0.66739661 C12.9634722,0.66739661 3.04402778,15.0055831 0.559305556,24.3862441 C0.283611111,25.2653119 0.11625,26.1895492 0.0454166667,27.1408881 C0.0169444444,27.4549898 0.000277777778,27.7607525 0.000277777778,28.0533119 C0.000277777778,34.8197017 5.48222222,40.3053627 12.2433333,40.3053627 C12.2433333,40.3053627 17.285,38.1427864 19.4454167,29.4945661" id="Fill-1" fill="#2996F8" fill-rule="nonzero" mask="url(#mask-2)"></path>
+                        </g>
+                    </g>
+                    <g id="Group-6" transform="translate(11.805556, 0.027866)">
+                        <g id="Fill-4-Clipped">
+                            <mask id="mask-4" fill="white">
+                                <use xlink:href="#path-3"></use>
+                            </mask>
+                            <g id="path-3"></g>
+                            <path d="M12.0852083,24.2857593 C9.81923611,14.7730644 1.158125,0.666979661 1.158125,0.666979661 C1.158125,0.666979661 4.964375,20.1259966 4.964375,29.1849119 C4.964375,38.0992847 0.437986111,40.3049458 0.437986111,40.3049458 C7.19979167,40.3049458 12.6810417,34.8199797 12.6810417,28.0535898 C12.6810417,26.7381153 12.4692361,25.4733695 12.0852083,24.2857593" id="Fill-4" fill="#2581D4" fill-rule="nonzero" mask="url(#mask-4)"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
