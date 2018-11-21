@@ -46,9 +46,6 @@ export default class QuizzController {
   _handleClickAnswer(answerNth) {
     const $title = this.$.quizz.querySelector('.quizz__questions__title')
     const $desc = this.$.quizz.querySelector('.quizz__questions__desc')
-    const $energy = document.querySelector('.ref-energy')
-    const $hunger = document.querySelector('.ref-hunger')
-    const $bladder = document.querySelector('.ref-bladder')
     const $answers = this._getAnswers()
 
     const outTimeline = new TimelineMax()
@@ -57,19 +54,7 @@ export default class QuizzController {
       .to($desc, .2, { opacity: 0, ease: Power1.easeOut })
       .staggerTo($answers, .5, { x: '100%', opacity: 0, ease: Power1.easeOut }, .2)
 
-    const deltaEnergy = this._getAnswers()[answerNth].getAttribute('delta-energy')
-    const deltaHunger = this._getAnswers()[answerNth].getAttribute('delta-hunger')
-    const deltaBladder = this._getAnswers()[answerNth].getAttribute('delta-bladder')
-      
-    const next = this._getAnswers()[answerNth].getAttribute('next')
-    const energy = $energy.getAttribute('energy') - deltaEnergy
-    const hunger = $hunger.getAttribute('hunger') - deltaHunger
-    const bladder = $bladder.getAttribute('bladder') - deltaBladder
-
-    $energy.setAttribute('energy', energy)
-    $hunger.setAttribute('hunger', hunger)
-    $bladder.setAttribute('bladder', bladder)
-    this._postData(next, energy, hunger, bladder)
+    this._getData(answerNth)
   }
 
   _getAnswers() {
@@ -82,7 +67,42 @@ export default class QuizzController {
     return $illustrations
   }
 
+  _getData(answerNth) {
+    this.isRequesting = true
+    const url = `/wp-content/themes/watertheme/api/get-data.php`
+    const http = new XMLHttpRequest()
+    http.onreadystatechange = () => {
+      if (http.readyState == 4 && http.status == 200) {
+        const $energy = document.querySelector('.ref-energy')
+        const $hunger = document.querySelector('.ref-hunger')
+        const $bladder = document.querySelector('.ref-bladder')
+
+        const deltaEnergy = this._getAnswers()[answerNth].getAttribute('delta-energy')
+        const deltaHunger = this._getAnswers()[answerNth].getAttribute('delta-hunger')
+        const deltaBladder = this._getAnswers()[answerNth].getAttribute('delta-bladder')
+
+        const data = JSON.parse(http.responseText)
+          
+        const next = this._getAnswers()[answerNth].getAttribute('next')
+        console.log("delta", deltaEnergy, deltaHunger, deltaBladder)
+        const energy = parseInt(data.energy) + parseInt(deltaEnergy)
+        const hunger = parseInt(data.hunger) + parseInt(deltaHunger)
+        const bladder = parseInt(data.bladder) + parseInt(deltaBladder)
+
+        $energy.setAttribute('energy', energy)
+        $hunger.setAttribute('hunger', hunger)
+        $bladder.setAttribute('bladder', bladder)
+
+        this._postData(next, energy, hunger, bladder)
+        this._updateFills(energy, hunger, bladder)
+      }
+    }
+    http.open('GET', url, true)
+    http.send()
+  }
+
   _postData(next, energy, hunger, bladder) {
+    console.log("before post", energy, hunger, bladder)
     this.isRequesting = true
     const url = `/wp-content/themes/watertheme/api/post-data.php?next=${next}&energy=${energy}&hunger=${hunger}&bladder${bladder}`
     const http = new XMLHttpRequest()
@@ -164,5 +184,15 @@ export default class QuizzController {
         $currentAnswers[j].setAttribute(attributes[i], $requestAnswers[j].getAttribute(attributes[i]))
       }
     }
+  }
+
+  _updateFills(energy, hunger, bladder) {
+    const $energyFill = document.querySelector('.ref-energy-fill')
+    const $hungerFill = document.querySelector('.ref-hunger-fill')
+    const $bladderFill = document.querySelector('.ref-bladder-fill')
+
+    $energyFill.style.transform = `scaleX(${energy/100})`
+    $hungerFill.style.transform = `scaleX(${hunger/100})`
+    $bladderFill.style.transform = `scaleX(${bladder/100})`
   }
 }

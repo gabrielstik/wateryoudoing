@@ -33,21 +33,21 @@ Template Name: Quizz
       </div>
       <div class="quizz__toolbar">
         <div class="quizz__toolbar__energy">
-          <div class="quizz__toolbar__bar__label button ref-energy" energy="<? $_SESSION['energy'] ? $_SESSION['energy'] : 1 ?>">Energy</div>
+          <div class="quizz__toolbar__bar__label button ref-energy" energy="<? $_SESSION['energy'] ? $_SESSION['energy'] : 100 ?>">Energy</div>
           <div class="quizz__toolbar__bar__bar">
-            <div class="quizz__toolbar__bar__bar__fill"></div>
+            <div class="quizz__toolbar__bar__bar__fill ref-energy-fill"></div>
           </div>
         </div>
         <div class="quizz__toolbar__hunger">
-          <div class="quizz__toolbar__bar__label ref-hunger" hunger="<? $_SESSION['hunger'] ? $_SESSION['hunger'] : 1 ?>">Hunger</div>
+          <div class="quizz__toolbar__bar__label ref-hunger" hunger="<? $_SESSION['hunger'] ? $_SESSION['hunger'] : 100 ?>">Hunger</div>
           <div class="quizz__toolbar__bar__bar">
-            <div class="quizz__toolbar__bar__bar__fill"></div>
+            <div class="quizz__toolbar__bar__bar__fill ref-hunger-fill"></div>
           </div>
         </div>
         <div class="quizz__toolbar__bladder">
-          <div class="quizz__toolbar__bar__label ref-bladder" bladder="<? $_SESSION['bladder'] ? $_SESSION['bladder'] : 1 ?>">Bladder</div>
+          <div class="quizz__toolbar__bar__label ref-bladder" bladder="<? $_SESSION['bladder'] ? $_SESSION['bladder'] : 100 ?>">Bladder</div>
           <div class="quizz__toolbar__bar__bar">
-            <div class="quizz__toolbar__bar__bar__fill"></div>
+            <div class="quizz__toolbar__bar__bar__fill ref-bladder-fill"></div>
           </div>
         </div>
       </div>
