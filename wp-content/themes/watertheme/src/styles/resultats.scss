@@ -1,0 +1,182 @@
+.results {
+    width: 100vw;
+    height: 5000px;
+    background: black;
+    display: inline-block;
+    margin: 0;
+    background: linear-gradient(#2948FF, #2996F8);
+
+    &__container1 {
+        background:white;
+        display: flex;
+        width: 90%;
+        height: 670px;
+        border-radius: 10px;
+        margin: 40px auto 0 auto;
+    }
+
+    &__toilets {
+        width: 168px;
+        margin-top: 140px;
+    }
+
+    &__button {
+        width: 264px;
+        height: 33px;
+        background: #2B2B2B;
+        border-radius: 50px;
+        margin: 0 auto;
+        margin-top: 100px;
+        text-align: center;
+        padding-top: 13px;
+      }
+
+      &__button:hover {
+            cursor: pointer;
+            background: rgb(12, 12, 12);
+      }
+      
+    &__button_inside {
+        color: white;
+        font-size: 18px;
+        font-weight: 800;
+      }
+
+    &__container1_left {
+        width: 40%;
+        height: 100%;
+        text-align: center;
+    }
+
+    &__container1_right {
+        width: 59%;
+        height: 100%;
+    }
+    
+    &__points {
+        margin-top: 135px;
+        margin-left: 100px;
+        font-size: 50px;
+        font-weight: 800;
+        color: $blue;
+    }
+
+    &__txt {
+        margin-top: 40px;
+        margin-left: 100px;
+        color: $txt-grey;
+        line-height: 1.5;
+        width: 420px;
+        text-align: left;
+    }
+
+    &__twitter {
+        display: inline-block;
+        width: 264px;
+        height: 30px;
+        background: $blue;
+        border-radius: 50px;
+        margin: 0 auto;
+        margin-top: 100px;
+        margin-left: 100px;
+        margin-right: 20px;
+        text-align: center;
+        padding-top: 15px;
+        background: #00ACED;
+    }
+
+    &__twitter:hover {
+        background: rgb(2, 141, 192);
+        cursor: pointer;
+    }
+
+    &__twitter_txt {
+        color: white;
+        font-weight: 600;
+        margin-left: 10px;
+    }
+
+    &__facebook {
+        display: inline-block;
+        width: 264px;
+        height: 30px;
+        margin-left: 100px;
+        background: $blue;
+        border-radius: 50px;
+        margin: 0 auto;
+        text-align: center;
+        padding-top: 15px;
+        background: #3B5998;
+    }
+
+        &__facebook:hover {
+            cursor: pointer;
+            background: rgb(46, 69, 119);
+        }
+
+    &__container2 {
+        background:white;
+        display: block;
+        width: 90%;
+        height: 670px;
+        border-radius: 10px;
+        margin: 40px auto 0 auto;
+    }
+
+    &__graphs
+    {
+        display: flex;
+        padding-top: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__graph
+    {
+        margin: 0 30px 0 30px;
+    }
+    
+    &__graph_bar {
+        width: 80px;
+        height: 400px;
+        background: linear-gradient(#FCD337, #FEED68);
+        margin: 0 auto;
+    }
+
+    &__transport {
+        background: linear-gradient(#FCA137, #FEB568);
+    }
+
+    &__technology {
+        background: linear-gradient(#FC3770, #FE687A);
+    }
+
+    &__drink {
+        background: linear-gradient(#3766FC, #689FFE);
+    }
+
+    &__activities {
+        background: linear-gradient(#37BFFC, #68D1FE);
+    }
+    
+    &__label {
+        text-transform: uppercase;
+        color: grey;
+        font-size: 16px;
+        text-align: center;
+        font-weight: 600;
+        margin-top: 30px;
+        margin-bottom: 20px;
+    }
+
+    &__container3 {
+        background:white;
+        display: block;
+        width: 90%;
+        height: 670px;
+        border-radius: 10px;
+        margin: 40px auto 0 auto;
+    }
+}
+

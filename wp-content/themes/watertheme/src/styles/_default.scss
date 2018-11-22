@@ -5,3 +5,21 @@ body {
 .b-oh {
   overflow: hidden;
 }
+
+.button {
+  width: 264px;
+  height: 35px;
+  background: $blue;
+  border-radius: 50px;
+  margin: 0 auto;
+  margin-top: 100px;
+  text-align: center;
+  padding-top: 15px;
+}
+
+.button_inside {
+  color: white;
+  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: 800;
+}
