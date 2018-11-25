@@ -33,7 +33,7 @@ Template Name: Quizz
       </div>
       <div class="quizz__toolbar">
         <div class="quizz__toolbar__energy">
-          <div class="quizz__toolbar__bar__label button ref-energy" energy="<? $_SESSION['energy'] ? $_SESSION['energy'] : 100 ?>">Energy</div>
+          <div class="quizz__toolbar__bar__label ref-energy" energy="<? $_SESSION['energy'] ? $_SESSION['energy'] : 100 ?>">Energy</div>
           <div class="quizz__toolbar__bar__bar">
             <div class="quizz__toolbar__bar__bar__fill ref-energy-fill"></div>
           </div>
@@ -62,7 +62,7 @@ Template Name: Quizz
         <? while (have_rows('answers')): the_row() ?>
         <li
           class="quizz__questions__list__item ref-answer"
-          next="<? the_sub_field('next_answer') ?>"
+          next="<? echo get_sub_field('next') == 'Résultats' ?  '/resultats' : get_sub_field('next_answer') ?>"
           delta-energy="<? the_field('energy', get_sub_field('item')) ?>"
           delta-hunger="<? the_field('hunger', get_sub_field('item')) ?>"
           delta-bladder="<? the_field('bladder', get_sub_field('item')) ?>"
