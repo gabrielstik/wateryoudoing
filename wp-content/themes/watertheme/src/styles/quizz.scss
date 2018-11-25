@@ -5,7 +5,7 @@
   grid-template-columns: 7fr 5fr;
 
   &__questions {
-    --paddingTop: 110px;
+    --paddingTop: 160px;
     height: calc(100% - var(--paddingTop));
     padding-top: var(--paddingTop);
     background-color: $black;
@@ -22,6 +22,8 @@
       margin-top: 40px;
       font-size: 18px;
       line-height: 28px;
+      width: 300px;
+      display: inline-block;
     }
 
     &__list {
@@ -98,14 +100,14 @@
     &__hunger {
 
       .quizz__toolbar__bar__bar__fill {
-        background-color: $red;
+        background-color: $blue;
       }
     }
 
     &__bladder {
 
       .quizz__toolbar__bar__bar__fill {
-        background-color: $yellow;
+        background-color: $blue;
       }
     }
 
@@ -116,10 +118,29 @@
         font-size: 14px;
         text-transform: uppercase;
         color: $txt-dark-grey;
+        margin-left: 50px;
+        margin-bottom: 10px;
+      }
+
+      &__block {
+        width: 40px;
+        height: 40px;
+        background-color: black;
+        position: absolute;
+        top: 70px;
+        border-radius: 50px;
+        z-index:40;
+
+        &__image {
+          width: 20px;
+          height: 20px;
+          margin-top: 10px;
+          margin-left: 10px;
+        }
       }
 
       &__bar {
-        width: 160px;
+        width: 180px;
         height: 12px;
         margin-top: 6px;
         border: solid 1px $grey;

@@ -1,0 +1,43 @@
+.video_page {
+
+    &__video {
+        margin-top:-40px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    &__skip {
+        width: 200px;
+        height: 30px;
+        background: red;
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin-top: 20px;
+        margin-right: 20px;
+        border-radius: 60px;
+        background-color: $dark-grey;
+        text-align:center;
+        padding-top: 15px;
+        cursor: pointer;
+
+        &__text {
+            color: white;
+            opacity: 1;
+        }
+    }
+
+    &__skip:hover {
+        background-color: #111111;
+    }
+
+    &__author{
+        position: absolute;
+        top: 0; 
+        left: 0;
+        margin-top: 40px;
+        margin-left: 50px;
+    }
+    
+}
+  
