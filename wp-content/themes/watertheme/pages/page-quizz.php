@@ -6,16 +6,16 @@ Template Name: Quizz
 <? get_header() ?>
 <main role="main">
   <a href="/wp-content/themes/watertheme/api/_destroy-session.php">Destroy session</a>
-  <div class="quizz">
-    <?
-      $args = array(
-        'post_type' => 'questions',
-        'p' => !empty($_SESSION['current_question']) ? $_SESSION['current_question'] : get_field('first_question', 'options'),
-        'posts_per_page' => 1
-      );
-      $the_query = new WP_Query($args);
-      $the_query->the_post();
-    ?>
+  <?
+    $args = array(
+      'post_type' => 'questions',
+      'p' => !empty($_SESSION['current_question']) ? $_SESSION['current_question'] : get_field('first_question', 'options'),
+      'posts_per_page' => 1
+    );
+    $the_query = new WP_Query($args);
+    $the_query->the_post();
+  ?>
+  <div class="quizz" style="background-image: url(<?= get_the_post_thumbnail_url() ?>)">
     <div class="quizz__illus">
       <div class="quizz__timebar">
         <div class="quizz__time"><? the_field('time') ?></div>
