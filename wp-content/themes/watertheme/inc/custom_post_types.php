@@ -5,7 +5,8 @@ function add_post_type_questions() {
     $args = array(
       'public' => true,
       'label'  => 'Questions',
-      'menu_icon' => 'dashicons-menu'
+      'menu_icon' => 'dashicons-menu',
+      'supports' => array('title', 'thumbnail')
     );
     register_post_type('questions', $args);
 }

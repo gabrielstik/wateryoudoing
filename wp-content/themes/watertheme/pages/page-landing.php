@@ -7,8 +7,8 @@ Template Name: Landing
 <main role="main">
   <div class="landing">
     <div class="landing__left">
-      <h1 class="landing__left__title">
-        Water<br>you<br>doing
+      <h1 class="landing__title_left">
+        <? bloginfo('name') ?>
       </h1>
     </div>
     <div class="landing__right">

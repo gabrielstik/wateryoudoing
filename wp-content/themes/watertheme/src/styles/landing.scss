@@ -16,17 +16,27 @@
     position: absolute;
     left: 0;
     background: linear-gradient(#2948FF, #2996F8);
-
-    &__title {
-      font-size: 80px;
-      font-family: Averta, arial;
-      color: white;
-      text-transform: uppercase;
-      margin-top: 3em;
-      margin-left: 1em;
-      text-align: left;
-    }
   }
+
+  &__title_left {
+    font-size: 80px;
+    font-family: Averta, arial;
+    color: white;
+    text-transform: uppercase;
+    margin-top: 3em;
+    margin-left: 1em;
+    text-align: left;
+    word-spacing: 99999999px;
+  }
+    // &__title { // modif. entrante titre
+    //   font-size: 80px;
+    //   font-family: Averta, arial;
+    //   color: white;
+    //   text-transform: uppercase;
+    //   margin-top: 3em;
+    //   margin-left: 1em;
+    //   text-align: left;
+    // }
 
 
   &__right {

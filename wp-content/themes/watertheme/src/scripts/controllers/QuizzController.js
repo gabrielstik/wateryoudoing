@@ -48,6 +48,10 @@ export default class QuizzController {
     const $desc = this.$.quizz.querySelector('.quizz__questions__desc')
     const $answers = this._getAnswers()
 
+    if ($answers[answerNth].getAttribute('next') == '/resultats') {
+      window.location.replace('/resultats')
+    }
+
     const outTimeline = new TimelineMax()
     outTimeline
       .to($title, .2, { y: '100%', ease: Power1.easeOut })
@@ -80,17 +84,16 @@ export default class QuizzController {
         const deltaEnergy = this._getAnswers()[answerNth].getAttribute('delta-energy')
         const deltaHunger = this._getAnswers()[answerNth].getAttribute('delta-hunger')
         const deltaBladder = this._getAnswers()[answerNth].getAttribute('delta-bladder')
-        console.log('')
-        console.log('delta', deltaBladder)
+        console.log('energy', deltaEnergy)
+        console.log('hunger', deltaHunger)
+        console.log('bladder', deltaBladder)
 
         const data = JSON.parse(http.responseText)
-        console.log('get', data.bladder)
           
         const next = this._getAnswers()[answerNth].getAttribute('next')
         const energy = parseInt(data.energy) + parseInt(deltaEnergy)
         const hunger = parseInt(data.hunger) + parseInt(deltaHunger)
         const bladder = parseInt(data.bladder) + parseInt(deltaBladder)
-        console.log('bladder', bladder)
 
         $energy.setAttribute('energy', energy)
         $hunger.setAttribute('hunger', hunger)
@@ -105,10 +108,8 @@ export default class QuizzController {
   }
 
   _postData(next, energy, hunger, bladder) {
-    console.log("before post", bladder)
     this.isRequesting = true
-    const url = `/wp-content/themes/watertheme/api/post-data.php?next=${next}&energy=${energy}&hunger=${hunger}&bladder${bladder}`
-    console.log('url', url)
+    const url = `/wp-content/themes/watertheme/api/post-data.php?next=${next}&energy=${energy}&hunger=${hunger}&bladder=${bladder}`
     const http = new XMLHttpRequest()
     http.onreadystatechange = () => {
       if (http.readyState == 4 && http.status == 200) {

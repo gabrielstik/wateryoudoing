@@ -6,16 +6,16 @@ Template Name: Quizz
 <? get_header() ?>
 <main role="main">
   <a href="/wp-content/themes/watertheme/api/_destroy-session.php">Destroy session</a>
-  <div class="quizz">
-    <?
-      $args = array(
-        'post_type' => 'questions',
-        'p' => !empty($_SESSION['current_question']) ? $_SESSION['current_question'] : get_field('first_question', 'options'),
-        'posts_per_page' => 1
-      );
-      $the_query = new WP_Query($args);
-      $the_query->the_post();
-    ?>
+  <?
+    $args = array(
+      'post_type' => 'questions',
+      'p' => !empty($_SESSION['current_question']) ? $_SESSION['current_question'] : get_field('first_question', 'options'),
+      'posts_per_page' => 1
+    );
+    $the_query = new WP_Query($args);
+    $the_query->the_post();
+  ?>
+  <div class="quizz" style="background-image: url(<?= get_the_post_thumbnail_url() ?>)">
     <div class="quizz__illus">
       <div class="quizz__timebar">
         <div class="quizz__time"><? the_field('time') ?></div>
@@ -65,7 +65,7 @@ Template Name: Quizz
         <? while (have_rows('answers')): the_row() ?>
         <li
           class="quizz__questions__list__item ref-answer"
-          next="<? the_sub_field('next_answer') ?>"
+          next="<? echo get_sub_field('next') == 'Résultats' ?  '/resultats' : get_sub_field('next_answer') ?>"
           delta-energy="<? the_field('energy', get_sub_field('item')) ?>"
           delta-hunger="<? the_field('hunger', get_sub_field('item')) ?>"
           delta-bladder="<? the_field('bladder', get_sub_field('item')) ?>"

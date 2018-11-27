@@ -3,6 +3,9 @@
   height: 100vh;
   display: grid;
   grid-template-columns: 7fr 5fr;
+  background-size: 35%;
+  background-repeat: no-repeat;
+  background-position: -5% 150px;
 
   &__questions {
     --paddingTop: 160px;
