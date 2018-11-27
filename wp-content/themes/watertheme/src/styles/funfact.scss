@@ -1,0 +1,55 @@
+.funfact {
+    background: black;
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    display: inline-block;
+    opacity:0.9;
+
+    &__content {
+        width: 450px;
+        height: 350;
+        margin: 0 auto;
+        margin-top: 200px;
+        text-align: center;
+
+        &__title {
+            color: white;
+            font-family: Montserrat, Arial;
+            font-weight: 800;
+            font-size: 26px;
+            margin-top: 60px;
+        }
+
+        &__text {
+            color: white;
+            font-family: Montserrat, Arial;
+            font-size: 16px;
+            width: 200px;
+            margin: 35px auto 0 auto;
+            line-height: 23px;
+        }
+
+        &__button {
+            background-color: $med-grey;
+            border: solid 1px $med-grey;
+            text-align: center;
+            width: 200px;
+            height: 42px;
+            border-radius: 50px;
+            margin: 50px auto 0 auto;
+            cursor: pointer;
+
+            &:hover {
+                border: solid 1px $grey;
+              }
+        }
+
+        &__link{
+            color: white;
+            font-size: 18px;
+            line-height: 40px;
+        }
+    }
+
+}
