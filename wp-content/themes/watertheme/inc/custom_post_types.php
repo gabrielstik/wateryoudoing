@@ -6,7 +6,8 @@ function add_post_type_questions() {
       'public' => true,
       'label'  => 'Questions',
       'menu_icon' => 'dashicons-menu',
-      'supports' => array('title', 'thumbnail')
+      'supports' => array('title', 'thumbnail'),
+      'taxonomies' => array('hygiene')
     );
     register_post_type('questions', $args);
 }

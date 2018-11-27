@@ -84,22 +84,28 @@ export default class QuizzController {
         const deltaEnergy = this._getAnswers()[answerNth].getAttribute('delta-energy')
         const deltaHunger = this._getAnswers()[answerNth].getAttribute('delta-hunger')
         const deltaBladder = this._getAnswers()[answerNth].getAttribute('delta-bladder')
-        console.log('energy', deltaEnergy)
-        console.log('hunger', deltaHunger)
-        console.log('bladder', deltaBladder)
+        const deltaLiters = this._getAnswers()[answerNth].getAttribute('delta-liters')
 
         const data = JSON.parse(http.responseText)
           
         const next = this._getAnswers()[answerNth].getAttribute('next')
-        const energy = parseInt(data.energy) + parseInt(deltaEnergy)
-        const hunger = parseInt(data.hunger) + parseInt(deltaHunger)
-        const bladder = parseInt(data.bladder) + parseInt(deltaBladder)
+        let energy = parseInt(data.energy) + parseInt(deltaEnergy)
+        let hunger = parseInt(data.hunger) + parseInt(deltaHunger)
+        let bladder = parseInt(data.bladder) + parseInt(deltaBladder)
+        let liters = parseInt(data.liters) + parseInt(deltaLiters)
+
+        energy = energy > 100 ? 100 : energy
+        energy = energy < 0 ? 0 : energy
+        hunger = hunger > 100 ? 100 : hunger
+        hunger = hunger < 0 ? 0 : hunger
+        bladder = bladder > 100 ? 100 : bladder
+        bladder = bladder < 0 ? 0 : bladder
 
         $energy.setAttribute('energy', energy)
         $hunger.setAttribute('hunger', hunger)
         $bladder.setAttribute('bladder', bladder)
 
-        this._postData(next, energy, hunger, bladder)
+        this._postData(next, energy, hunger, bladder, liters)
         this._updateFills(energy, hunger, bladder)
       }
     }
@@ -107,9 +113,9 @@ export default class QuizzController {
     http.send()
   }
 
-  _postData(next, energy, hunger, bladder) {
+  _postData(next, energy, hunger, bladder, liters) {
     this.isRequesting = true
-    const url = `/wp-content/themes/watertheme/api/post-data.php?next=${next}&energy=${energy}&hunger=${hunger}&bladder=${bladder}`
+    const url = `/wp-content/themes/watertheme/api/post-data.php?next=${next}&liters=${liters}&energy=${energy}&hunger=${hunger}&bladder=${bladder}`
     const http = new XMLHttpRequest()
     http.onreadystatechange = () => {
       if (http.readyState == 4 && http.status == 200) {
