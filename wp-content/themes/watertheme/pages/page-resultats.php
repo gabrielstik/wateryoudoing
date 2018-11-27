@@ -14,7 +14,7 @@ Template Name: Résultats
                 </div>
             </div>
             <div class="results__container1_right">
-                <h1 class="results__points">8 532 litres</h1>
+                <h1 class="results__points"><?= $_SESSION['liters'] ?> litres</h1>
                 <p class="results__txt">Cette consommation correspond à 832 chasses d’eau tirées en un seul jour.</p>
                 <p class="results__txt">Ce résultat correspond à ta consommation propre, ainsi qu’à toute l’eau utilisée pour produire ce que tu as utilisé tout au long de ta journée.</p>
                 <div class="results__twitter">

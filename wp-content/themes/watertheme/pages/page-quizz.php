@@ -69,6 +69,7 @@ Template Name: Quizz
           delta-energy="<? the_field('energy', get_sub_field('item')) ?>"
           delta-hunger="<? the_field('hunger', get_sub_field('item')) ?>"
           delta-bladder="<? the_field('bladder', get_sub_field('item')) ?>"
+          delta-liters="<? the_field('water', get_sub_field('item')) ?>"
         ><? the_sub_field('answer') ?></li>
         <? endwhile ?>
       </ul>
