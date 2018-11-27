@@ -127,7 +127,6 @@
     {
         display: flex;
         padding-top: 80px;
-        display: flex;
         align-items: center;
         justify-content: center;
     }
@@ -140,24 +139,47 @@
     &__graph_bar {
         width: 80px;
         height: 400px;
-        background: linear-gradient(#FCD337, #FEED68);
         margin: 0 auto;
+        position: relative;
+
+        &__fill {
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          transform-origin: bottom;
+        }
+    }
+
+    &__hygiene {
+      div {
+        background: linear-gradient(#FCD337, #FEED68);
+      }
     }
 
     &__transport {
+      div {
         background: linear-gradient(#FCA137, #FEB568);
+      }
     }
 
     &__technology {
+      div {
         background: linear-gradient(#FC3770, #FE687A);
+      }
     }
 
     &__drink {
+      div {
         background: linear-gradient(#3766FC, #689FFE);
+      }
     }
 
     &__activities {
+      div {
         background: linear-gradient(#37BFFC, #68D1FE);
+      }
     }
     
     &__label {

@@ -33,7 +33,7 @@ Template Name: Quizz
       </div>
       <div class="quizz__toolbar">
         <div class="quizz__toolbar__energy">
-          <div class="quizz__toolbar__bar__label ref-energy" energy="<? $_SESSION['energy'] ? $_SESSION['energy'] : 100 ?>">Energy</div>
+          <div class="quizz__toolbar__bar__label ref-energy" energy="<? $_SESSION['energy'] ? $_SESSION['energy'] : 100 ?>">Energy <?= ':'.$_SESSION['terms'] ?></div>
           <div class="quizz__toolbar__bar__block"><img class="quizz__toolbar__bar__block__image" src="<?= get_template_directory_uri() ?>/images/slumber.svg"></div>
           <div class="quizz__toolbar__bar__bar">
             <div class="quizz__toolbar__bar__bar__fill ref-energy-fill"></div>
@@ -64,7 +64,11 @@ Template Name: Quizz
       <ul class="quizz__questions__list">
         <? while (have_rows('answers')): the_row() ?>
         <li
-          class="quizz__questions__list__item ref-answer"
+          class="quizz__questions__list__item ref-answer <?
+            foreach (wp_get_post_terms(get_sub_field('item'), 'types', array('fields' => 'all')) as $term) {
+              echo 'taxo-'.$term->slug.' ';
+            }
+          ?>"
           next="<? echo get_sub_field('next') == 'Résultats' ?  '/resultats' : get_sub_field('next_answer') ?>"
           delta-energy="<? the_field('energy', get_sub_field('item')) ?>"
           delta-hunger="<? the_field('hunger', get_sub_field('item')) ?>"

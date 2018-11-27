@@ -30,28 +30,38 @@ Template Name: Résultats
         <div class="results__container2">
             <div class="results__graphs">
                 <div class="results__graph">
-                    <h3 class="results__label">2 002L</h3>
-                    <div class="results__graph_bar"></div>
-                    <h3 class="results__label">hygiene</h3>   
+                    <h3 class="results__label"><?= $_SESSION['termsHygiene'] ?> L</h3>
+                    <div class="results__graph_bar results__hygiene">
+                      <div class="results__graph_bar__fill"></div>
+                    </div>
+                    <h3 class="results__label">Hygiene</h3>   
                 </div>
                 <div class="results__graph">
-                    <h3 class="results__label">657L</h3>
-                    <div class="results__graph_bar results__transport"></div>
+                    <h3 class="results__label"><?= $_SESSION['termsTransport'] ?> L</h3>
+                    <div class="results__graph_bar results__transport">
+                      <div class="results__graph_bar__fill"></div>
+                    </div>
                     <h3 class="results__label">Transport</h3>   
                 </div>
                 <div class="results__graph">
-                    <h3 class="results__label">202L</h3>
-                    <div class="results__graph_bar results__technology"></div>
+                    <h3 class="results__label"><?= $_SESSION['termsTechnology'] ?> L</h3>
+                    <div class="results__graph_bar results__technology">
+                      <div class="results__graph_bar__fill"></div>
+                    </div>
                     <h3 class="results__label">Technology</h3>   
                 </div>
                 <div class="results__graph">
-                    <h3 class="results__label">5 542L</h3>
-                    <div class="results__graph_bar results__drink"></div>
+                    <h3 class="results__label"><?= $_SESSION['termsDrinkEat'] ?> L</h3>
+                    <div class="results__graph_bar results__drink">
+                      <div class="results__graph_bar__fill"></div>
+                    </div>
                     <h3 class="results__label">Drink / Eat</h3>   
                 </div>
                 <div class="results__graph">
-                    <h3 class="results__label">129L</h3>
-                    <div class="results__graph_bar results__activities"></div>
+                    <h3 class="results__label"><?= $_SESSION['termsActivities'] ?> L</h3>
+                    <div class="results__graph_bar results__activities">
+                      <div class="results__graph_bar__fill"></div>
+                    </div>
                     <h3 class="results__label">Activities</h3>   
                 </div>
             </div>

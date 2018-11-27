@@ -12,9 +12,7 @@ export default class SoundController {
 
 
   _soundCreate() {
-        console.log('prout')
-        const $audio = new Audio('../.../sounds/BO_WYD.mp3');
-        console.log($audio)
-        $audio.play();
+      const $audio = new Audio('../.../sounds/BO_WYD.mp3');
+      $audio.play();
     }
 }

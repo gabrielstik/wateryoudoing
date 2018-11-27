@@ -94,6 +94,27 @@ export default class QuizzController {
         let bladder = parseInt(data.bladder) + parseInt(deltaBladder)
         let liters = parseInt(data.liters) + parseInt(deltaLiters)
 
+        const $terms = {
+          hygiene: document.querySelector('.taxo-hygiene'),
+          transport: document.querySelector('.taxo-transport'),
+          technology: document.querySelector('.taxo-technology'),
+          drinkEat: document.querySelector('.taxo-drinkEat'),
+          activities: document.querySelector('.taxo-activities'),
+        }
+        const terms = {
+          hygiene: data.termsHygiene,
+          transport: data.termsTransport,
+          technology: data.termsTechnology,
+          drinkEat: data.termsDrinkEat,
+          activities: data.termsActivities,
+        }
+
+        if ($terms.hygiene) terms.hygiene = terms.hygiene + parseInt(deltaLiters)
+        if ($terms.transport) terms.transport = terms.transport + parseInt(deltaLiters)
+        if ($terms.technology) terms.technology = terms.technology + parseInt(deltaLiters)
+        if ($terms.drinkEat) terms.drinkEat = terms.drinkEat + parseInt(deltaLiters)
+        if ($terms.activities) terms.activities = terms.activities + parseInt(deltaLiters)
+
         energy = energy > 100 ? 100 : energy
         energy = energy < 0 ? 0 : energy
         hunger = hunger > 100 ? 100 : hunger
@@ -105,7 +126,7 @@ export default class QuizzController {
         $hunger.setAttribute('hunger', hunger)
         $bladder.setAttribute('bladder', bladder)
 
-        this._postData(next, energy, hunger, bladder, liters)
+        this._postData(next, energy, hunger, bladder, liters, terms)
         this._updateFills(energy, hunger, bladder)
       }
     }
@@ -113,9 +134,20 @@ export default class QuizzController {
     http.send()
   }
 
-  _postData(next, energy, hunger, bladder, liters) {
+  _postData(next, energy, hunger, bladder, liters, terms) {
     this.isRequesting = true
-    const url = `/wp-content/themes/watertheme/api/post-data.php?next=${next}&liters=${liters}&energy=${energy}&hunger=${hunger}&bladder=${bladder}`
+    const url = `/wp-content/themes/watertheme/api/post-data.php?
+      next=${next}&
+      liters=${liters}&
+      energy=${energy}&
+      hunger=${hunger}&
+      bladder=${bladder}&
+      termsHygiene=${terms.hygiene}&
+      termsTransport=${terms.transport}&
+      termsTechnology=${terms.technology}&
+      termsDrinkEat=${terms.drinkEat}&
+      termsActivities=${terms.activities}
+    ` // terms.blabla
     const http = new XMLHttpRequest()
     http.onreadystatechange = () => {
       if (http.readyState == 4 && http.status == 200) {
