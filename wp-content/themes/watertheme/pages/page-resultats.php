@@ -66,8 +66,6 @@ Template Name: Résultats
                 </div>
             </div>
         </div>
-        <div class="results__container3">
-        </div>
     <div>
 </main>
 

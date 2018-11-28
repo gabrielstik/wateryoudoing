@@ -232,7 +232,9 @@ export default class QuizzController {
     const $hungerFill = document.querySelector('.ref-hunger-fill')
     const $bladderFill = document.querySelector('.ref-bladder-fill')
 
-    $energyFill.style.transform = `scaleX(${energy/100})`
+    // if (energy <= 0) {
+      $energyFill.style.transform = `scaleX(${energy/100})`
+    // }
     $hungerFill.style.transform = `scaleX(${hunger/100})`
     $bladderFill.style.transform = `scaleX(${bladder/100})`
   }
