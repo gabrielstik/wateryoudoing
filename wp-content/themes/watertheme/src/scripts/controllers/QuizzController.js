@@ -7,10 +7,12 @@ export default class QuizzController {
       quizz: document.querySelector('.quizz')
     }
     this._eventListeners()
+    this._currentTime()
   }
 
   _eventListeners() {
     const $answers = this._getAnswers()
+
     for (let i = 0; i < $answers.length; i++) {
 
       $answers[i].addEventListener('mouseenter', () => {
@@ -24,8 +26,22 @@ export default class QuizzController {
       $answers[i].addEventListener('click', () => {
         this._handleClickAnswer(i)
       })
+      $answers[i].addEventListener('click', () => {
+        this._updateTime(i)
+      })
     }
   }
+
+  _currentTime() {
+    const $timebar = document.querySelector('.quizz__timebar__time')
+    const $time = ($timebar.innerHTML).substr(0,2)
+
+    const $position = 40*($time-7)
+    console.log($position)
+    $timebar.style.left = $position+'px'
+
+    console.log($time)
+}
 
   _handleEnterAnswer(answerNth) {
     TweenMax.to(this._getIllustrations()[answerNth], .2, {
@@ -59,6 +75,17 @@ export default class QuizzController {
       .staggerTo($answers, .5, { x: '100%', opacity: 0, ease: Power1.easeOut }, .2)
 
     this._getData(answerNth)
+  }
+
+  _updateTime() {
+    const $timebar = document.querySelector('.quizz__timebar__time')
+    const $time = ($timebar.innerHTML).substr(0,2)
+
+    const $position = 27*($time-7)
+    console.log($position)
+    $timebar.style.left = $position+'px'
+
+    console.log($time)
   }
 
   _getAnswers() {
@@ -214,6 +241,7 @@ export default class QuizzController {
         { x: '-100%', opacity: 0 },
         { x: '0%', opacity: 1, ease: Power1.easeOut }
       , .2)
+
   }
 
   _pushAttributes($, attributes) {

@@ -167,16 +167,19 @@
     margin: 80px auto;
     background-color: $txt-dark-grey;
     position: relative;
-  }
 
-  &__time {
-    padding: 0 20px;
-    font-size: 30px;
-    font-weight: bold;
-    color: $txt-dark-grey;
-    position: absolute;
-    background-color: $white;
-    top: -15px;
-    left: 0;
+    &__time {
+      padding: 0 20px;
+      font-size: 30px;
+      font-weight: bold;
+      color: $txt-dark-grey;
+      position: absolute;
+      background-color: $white;
+      width: 80px;
+      height: 30px;
+      top: -15px;
+      left: 0;
+    }
+
   }
 }

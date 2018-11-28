@@ -4,7 +4,7 @@
     background: black;
     display: inline-block;
     margin: 0;
-    background: linear-gradient(#2948FF, #2996F8);
+    background: $dark-grey;
 
     &__container1 {
         background:white;
@@ -68,6 +68,7 @@
         line-height: 1.5;
         width: 420px;
         text-align: left;
+        font-family: MaisonNeue, Arial;
     }
 
     &__twitter {
