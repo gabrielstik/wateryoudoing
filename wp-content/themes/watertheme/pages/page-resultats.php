@@ -21,7 +21,8 @@ Template Name: Résultats
                   if (have_rows('stories')) {
                     while (have_rows('stories')) { the_row();
                       if (intval($_SESSION['liters']) > intval(get_sub_field('mini')) && intval($_SESSION['liters']) < intval(get_sub_field('maxi'))) {
-                        echo str_replace('$', floor(intval($_SESSION['liters'])/intval(get_sub_field('divide'))), get_sub_field('story'));
+                        // echo str_replace('$', floor(intval($_SESSION['liters'])/intval(get_sub_field('divide'))), get_sub_field('story'));
+                        echo str_replace('$', '326', get_sub_field('story'));
                       }
                     }
                   }
