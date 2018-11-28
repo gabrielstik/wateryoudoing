@@ -18,7 +18,7 @@ Template Name: Quizz
   <div class="quizz" style="background-image: url(<?= get_the_post_thumbnail_url() ?>)">
     <div class="quizz__illus">
       <div class="quizz__timebar">
-        <div class="quizz__time"><? the_field('time') ?></div>
+        <div class="quizz__timebar__time"><? the_field('time') ?></div>
       </div>
       <div class="quizz__illus__container">
         <? if (have_rows('answers')): ?>

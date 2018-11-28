@@ -10,9 +10,14 @@ Template Name: Landing
       <h1 class="landing__title_left">
         <? bloginfo('name') ?>
       </h1>
+      <div class="container-fliud">
+        <div class="waves">
+            <div class="wave"></div>
+            <div class="wave"></div>
+        </div>
+      </div>
     </div>
     <div class="landing__right">
-      <img src="<?= get_template_directory_uri() ?>/images/wateryoudoing_logo.png" alt="wateryoudoing" class="landing__right__logo">
       <p class="landing__right__text">
       An adult consumes an average of 160 liters of water a day.
       </p>
@@ -20,7 +25,7 @@ Template Name: Landing
       Beyond its own consumption, water is used to produce a lot of things... Wateryoudoing wants to confront you to your own reality.
       </p>
       <div class="button">
-        <a href="/video/" class="button_inside">C'est parti !</a>
+        <a href="/video/" class="button_inside">Let's go !</a>
       </div>
     </div>
   </div>
