@@ -33,7 +33,7 @@ export default class QuizzController {
     const $timebar = document.querySelector('.quizz__timebar__time')
     const $time = ($timebar.innerHTML).substr(0,2)
 
-    const $position = 40*($time-7)
+    const $position = 30*($time-6)
     $timebar.style.left = $position+'px'
 }
 
@@ -71,11 +71,25 @@ export default class QuizzController {
     this._getData(answerNth)
   }
 
+  _handleClickFact() {
+    const $funfact = document.querySelector('.funfact')
+
+    const killFact = () => {
+      document.body.removeChild($funfact)
+    }
+
+    TweenMax.to($funfact, .5, {
+      opacity: 0,
+      ease: Power1.easeOut,
+      onComplete: killFact
+    })
+  }
+
   _updateTime() {
     const $timebar = document.querySelector('.quizz__timebar__time')
     const $time = ($timebar.innerHTML).substr(0,2)
 
-    const $position = 27*($time-7)
+    const $position = 30*($time-6)
     TweenMax.to($timebar, 1, {
       x: $position,
       ease: Power1.easeOut
@@ -117,9 +131,9 @@ export default class QuizzController {
 
         const $terms = {
           hygiene: document.querySelector('.taxo-hygiene'),
-          transport: document.querySelector('.taxo-transport'),
-          technology: document.querySelector('.taxo-technology'),
-          drinkEat: document.querySelector('.taxo-drinkEat'),
+          transport: document.querySelector('.taxo-transports'),
+          technology: document.querySelector('.taxo-technologies'),
+          drinkEat: document.querySelector('.taxo-alimentations'),
           activities: document.querySelector('.taxo-activities'),
         }
         const terms = {
@@ -137,11 +151,41 @@ export default class QuizzController {
         if ($terms.activities) terms.activities = terms.activities + parseInt(deltaLiters)
 
         energy = energy > 100 ? 100 : energy
-        energy = energy < 0 ? 0 : energy
         hunger = hunger > 100 ? 100 : hunger
-        hunger = hunger < 0 ? 0 : hunger
         bladder = bladder > 100 ? 100 : bladder
-        bladder = bladder < 0 ? 0 : bladder
+
+        console.log(energy, hunger, bladder)
+
+        if (energy <= 0) {
+          setTimeout(() => { 
+            energy = 100
+            hunger = 100
+            bladder = 100
+            this._postData(next, energy, hunger, bladder, liters, terms, true)
+          }, 4000)
+          this._showFact('energy')
+          // $energyFill.style.transform = `scaleX(1)`
+        }
+        else if (hunger <= 0) {
+          setTimeout(() => { 
+            energy = 100
+            hunger = 100
+            bladder = 100
+            this._postData(next, energy, hunger, bladder, liters, terms, true)
+          }, 4000)
+          this._showFact('hunger')
+          // $energyFill.style.transform = `scaleX(1)`
+        }
+        else if (bladder <= 0) {
+          setTimeout(() => { 
+            energy = 100
+            hunger = 100
+            bladder = 100
+            this._postData(next, energy, hunger, bladder, liters, terms, true)
+          }, 4000)
+          this._showFact('bladder')
+          // $energyFill.style.transform = `scaleX(1)`
+        }
 
         $energy.setAttribute('energy', energy)
         $hunger.setAttribute('hunger', hunger)
@@ -149,14 +193,13 @@ export default class QuizzController {
 
         this._postData(next, energy, hunger, bladder, liters, terms)
         this._updateFills(energy, hunger, bladder)
-        this._updateTime()
       }
     }
     http.open('GET', url, true)
     http.send()
   }
 
-  _postData(next, energy, hunger, bladder, liters, terms) {
+  _postData(next, energy, hunger, bladder, liters, terms, fact = false) {
     this.isRequesting = true
     const url = `/wp-content/themes/watertheme/api/post-data.php?
       next=${next}&
@@ -173,7 +216,8 @@ export default class QuizzController {
     const http = new XMLHttpRequest()
     http.onreadystatechange = () => {
       if (http.readyState == 4 && http.status == 200) {
-        this._domAjaxRequest()
+        if (!fact) this._domAjaxRequest()
+        else this._updateFills(energy, hunger, bladder)
       }
     }
     http.open('POST', url, true)
@@ -190,6 +234,7 @@ export default class QuizzController {
         $.innerHTML = http.responseText
 
         const textToPush = [
+          '.quizz__background',
           '.quizz__timebar__time',
           '.quizz__questions__title',
           '.quizz__questions__desc',
@@ -201,6 +246,7 @@ export default class QuizzController {
         ]
         this._pushText($, textToPush)
         this._pushAttributes($, attrToPush)
+        this._updateTime()
       }
     }
     http.open('GET', url, true)
@@ -248,6 +294,15 @@ export default class QuizzController {
         $currentAnswers[j].setAttribute(attributes[i], $requestAnswers[j].getAttribute(attributes[i]))
       }
     }
+
+    for (let i = 0; i < $requestAnswers.length; i++) {
+      $currentAnswers[i].classList.remove('taxo-hygiene')
+      $currentAnswers[i].classList.remove('taxo-transports')
+      $currentAnswers[i].classList.remove('taxo-technologies')
+      $currentAnswers[i].classList.remove('taxo-alimentations')
+      $currentAnswers[i].classList.remove('taxo-activities')
+      $currentAnswers[i].classList.add($requestAnswers[i].classList[2])
+    }
   }
 
   _updateFills(energy, hunger, bladder) {
@@ -255,10 +310,29 @@ export default class QuizzController {
     const $hungerFill = document.querySelector('.ref-hunger-fill')
     const $bladderFill = document.querySelector('.ref-bladder-fill')
 
-    // if (energy <= 0) {
-      $energyFill.style.transform = `scaleX(${energy/100})`
-    // }
+    $energyFill.style.transform = `scaleX(${energy/100})`
     $hungerFill.style.transform = `scaleX(${hunger/100})`
     $bladderFill.style.transform = `scaleX(${bladder/100})`
+  }
+
+  _showFact(page) {
+    console.log(page)
+    this.isRequesting = true
+    const url = `/funfact?fact=${page}`
+    const http = new XMLHttpRequest()
+    http.onreadystatechange = () => {
+      if (http.readyState == 4 && http.status == 200) {
+        const $ = document.createElement('div')
+        $.innerHTML = http.responseText
+        document.body.appendChild($.querySelector('.funfact'))
+
+        const $button = document.querySelector('.funfact__content__button')
+        $button.addEventListener('click', () => {
+          this._handleClickFact()
+        })
+      }
+    }
+    http.open('GET', url, true)
+    http.send()
   }
 }

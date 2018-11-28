@@ -1,5 +1,3 @@
-import { TweenMax, TimelineMax } from '../vendor/TweenMax'
-
 export default class SoundController {
 
   constructor() {
@@ -7,12 +5,17 @@ export default class SoundController {
       quizz: document.querySelector('.quizz')
     }
 
-    this._soundCreate()
-  }
+    this.click = new Audio(this.$.quizz.dataset.uri+'/sounds/click.wav');
 
-
-  _soundCreate() {
-      const $audio = new Audio('../.../sounds/BO_WYD.mp3');
-      $audio.play();
+    const $answers = document.querySelectorAll('.ref-answer')
+    
+    for (let i = 0; i < $answers.length; i++) {
+      $answers[i].addEventListener('click', () => {
+        console.log('ok')
+        this.click = new Audio(this.$.quizz.dataset.uri+'/sounds/click.wav');
+        this.click.currentTime = 0
+        this.click.play()
+      })
     }
+  }
 }

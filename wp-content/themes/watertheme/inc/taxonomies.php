@@ -7,3 +7,11 @@ function add_taxonomy_types() {
   );
   register_taxonomy('types', 'items', $args);
 }
+
+add_action('init', 'add_taxonomy_consumption');
+function add_taxonomy_consumption() {
+  $args = array(
+    'label' => 'Consommation'
+  );
+  register_taxonomy('consumption', 'items', $args);
+}

@@ -5,7 +5,7 @@ import ResultsController from './controllers/ResultsController'
 window.onload = () => {
   if (document.querySelector('.quizz')) {
     new QuizzController()
-    // new SoundController()
+    new SoundController()
   }
   if (document.querySelector('.results'))  new ResultsController()
 }

@@ -3,6 +3,7 @@
 Template Name: Résultats
 */
 ?>
+<? include(THEME_ROOT.'/api/_destroy-session.php') ?>
 <? get_header() ?>
 <main role="main">
     <div class="results">
@@ -14,9 +15,18 @@ Template Name: Résultats
                 </div>
             </div>
             <div class="results__container1_right">
-                <h1 class="results__points"><?= $_SESSION['liters'] ?> litres</h1>
-                <p class="results__txt">Cette consommation correspond à 832 chasses d’eau tirées en un seul jour.</p>
-                <p class="results__txt">Ce résultat correspond à ta consommation propre, ainsi qu’à toute l’eau utilisée pour produire ce que tu as utilisé tout au long de ta journée.</p>
+              <h1 class="results__points"><?= $_SESSION['liters'] ?> litres</h1>
+              <div class="results__txt">
+                  <?
+                  if (have_rows('stories')) {
+                    while (have_rows('stories')) { the_row();
+                      if (intval($_SESSION['liters']) > intval(get_sub_field('mini')) && intval($_SESSION['liters']) < intval(get_sub_field('maxi'))) {
+                        echo str_replace('$', floor(intval($_SESSION['liters'])/intval(get_sub_field('divide'))), get_sub_field('story'));
+                      }
+                    }
+                  }
+                  ?>
+                </div>
                 <div class="results__twitter">
                     <img class="results__twitter_svg" src="<?= get_template_directory_uri() ?>/images/twitter.svg" alt="" >
                     <a href="#" class="results__twitter_txt">Share on Twitter</a>

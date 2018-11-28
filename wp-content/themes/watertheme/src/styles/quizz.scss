@@ -3,9 +3,25 @@
   height: 100vh;
   display: grid;
   grid-template-columns: 7fr 5fr;
-  background-size: 35%;
-  background-repeat: no-repeat;
-  background-position: -5% 150px;
+
+  &__background {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    &__image {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-size: 55%;
+      background-repeat: no-repeat;
+      background-position: -5% 150px;
+    }
+  }
 
   &__questions {
     --paddingTop: 160px;

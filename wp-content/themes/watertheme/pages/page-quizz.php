@@ -5,7 +5,6 @@ Template Name: Quizz
 ?>
 <? get_header() ?>
 <main role="main">
-  <a href="/wp-content/themes/watertheme/api/_destroy-session.php">Destroy session</a>
   <?
     $args = array(
       'post_type' => 'questions',
@@ -15,8 +14,11 @@ Template Name: Quizz
     $the_query = new WP_Query($args);
     $the_query->the_post();
   ?>
-  <div class="quizz" style="background-image: url(<?= get_the_post_thumbnail_url() ?>)">
+  <div class="quizz" data-uri="<?= THEME_ROOT ?>">
     <div class="quizz__illus">
+      <div class="quizz__background">
+        <div class="quizz__background__image" style="background-image: url(<?= get_the_post_thumbnail_url() ?>)"></div>
+      </div>
       <div class="quizz__timebar">
         <div class="quizz__timebar__time"><? the_field('time') ?></div>
       </div>
@@ -33,7 +35,7 @@ Template Name: Quizz
       </div>
       <div class="quizz__toolbar">
         <div class="quizz__toolbar__energy">
-          <div class="quizz__toolbar__bar__label ref-energy" energy="<? $_SESSION['energy'] ? $_SESSION['energy'] : 100 ?>">Energy <?= ':'.$_SESSION['terms'] ?></div>
+          <div class="quizz__toolbar__bar__label ref-energy" energy="<? $_SESSION['energy'] ? $_SESSION['energy'] : 100 ?>"><a href="/wp-content/themes/watertheme/api/_destroy-session.php">Energy</a></div>
           <div class="quizz__toolbar__bar__block"><img class="quizz__toolbar__bar__block__image" src="<?= get_template_directory_uri() ?>/images/slumber.svg"></div>
           <div class="quizz__toolbar__bar__bar">
             <div class="quizz__toolbar__bar__bar__fill ref-energy-fill"></div>
@@ -80,5 +82,6 @@ Template Name: Quizz
       <? endif ?>
     </div>
   </div>
+  <iframe class="ref-bo" src="<?= THEME_ROOT.'/sounds/bo.mp3' ?>"allow="autoplay" loop="true" style="display:none"></iframe> 
 </main>
 <? get_footer() ?>

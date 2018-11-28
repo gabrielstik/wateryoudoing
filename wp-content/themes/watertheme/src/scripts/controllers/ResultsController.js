@@ -22,6 +22,7 @@ export default class ResultsController {
         for (let i = 0; i < terms.length; i++) max = max > terms[i] ? max : terms[i] 
         
         const animateBars = () => {
+          console.log(terms)
           const $fills = document.querySelectorAll('.results__graph_bar__fill')
           for (let i = 0; i < $fills.length; i++) {
             TweenMax.to($fills[i], .8, {
