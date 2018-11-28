@@ -26,9 +26,6 @@ export default class QuizzController {
       $answers[i].addEventListener('click', () => {
         this._handleClickAnswer(i)
       })
-      $answers[i].addEventListener('click', () => {
-        this._updateTime(i)
-      })
     }
   }
 
@@ -37,10 +34,7 @@ export default class QuizzController {
     const $time = ($timebar.innerHTML).substr(0,2)
 
     const $position = 40*($time-7)
-    console.log($position)
     $timebar.style.left = $position+'px'
-
-    console.log($time)
 }
 
   _handleEnterAnswer(answerNth) {
@@ -82,10 +76,10 @@ export default class QuizzController {
     const $time = ($timebar.innerHTML).substr(0,2)
 
     const $position = 27*($time-7)
-    console.log($position)
-    $timebar.style.left = $position+'px'
-
-    console.log($time)
+    TweenMax.to($timebar, 1, {
+      x: $position,
+      ease: Power1.easeOut
+    })
   }
 
   _getAnswers() {
@@ -155,6 +149,7 @@ export default class QuizzController {
 
         this._postData(next, energy, hunger, bladder, liters, terms)
         this._updateFills(energy, hunger, bladder)
+        this._updateTime()
       }
     }
     http.open('GET', url, true)
@@ -195,7 +190,7 @@ export default class QuizzController {
         $.innerHTML = http.responseText
 
         const textToPush = [
-          '.quizz__time',
+          '.quizz__timebar__time',
           '.quizz__questions__title',
           '.quizz__questions__desc',
           ['.quizz__questions__list__item'],
