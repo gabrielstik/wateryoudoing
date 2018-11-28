@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html <? language_attributes() ?>>
 <head>
-  <title><? the_title() ?></title>
+  <title>Water you doing : <? the_title() ?></title>
   <meta charset="<? bloginfo('charset') ?>" />
   <link rel="stylesheet" href="<? bloginfo('stylesheet_url') ?>">
   <link rel="icon" type="image/png" href="<? THEME_ROOT.'/images/favicon.png' ?>" />
